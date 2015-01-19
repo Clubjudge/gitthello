@@ -1,1 +1,1 @@
-rvm use --create ruby-1.9.3-p484@gitthellogemset
+rvm use --create ruby-2.1.2@gitthellogemset

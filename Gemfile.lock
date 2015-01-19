@@ -19,7 +19,13 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     builder (3.2.2)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     coderay (1.1.0)
+    columnize (0.9.0)
+    debugger-linecache (1.2.0)
     descendants_tracker (0.0.3)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
@@ -53,10 +59,13 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
-    pry (0.9.12.6)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
     rack (1.5.2)
     raindrops (0.13.0)
     rake (10.1.1)
@@ -71,7 +80,7 @@ GEM
       json
       oauth (~> 0.4.5)
       rest-client (~> 1.6.7)
-    slop (3.5.0)
+    slop (3.6.0)
     thread_safe (0.3.4)
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
@@ -86,7 +95,7 @@ PLATFORMS
 DEPENDENCIES
   dotenv!
   github_api
-  pry
+  pry-byebug
   rake
   ruby-trello (~> 1.1.0)
   unicorn

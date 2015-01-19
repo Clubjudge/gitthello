@@ -1,7 +1,7 @@
 # -*- ruby -*-
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.1.2'
 gem 'rake'
 
 gem 'github_api'
@@ -10,5 +10,5 @@ gem 'unicorn'
 gem 'dotenv', :git => 'https://github.com/gorenje/dotenv.git', :branch => 'squaure_brackets'
 
 group :development do
-  gem 'pry'
+  gem 'pry-byebug'
 end
