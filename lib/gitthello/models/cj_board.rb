@@ -31,7 +31,7 @@ module Githello
     end
 
     def add_card issue
-      p "adding issue #{issue['title']} :: #{issue['id']} to trello"
+      $LOG.info "adding issue #{issue['title']} :: #{issue['id']} to trello"
       Trello::Card.create(:name => issue['title'], :list_id => list_id, :desc => issue['body']).tap do |card|
         card.add_attachment(issue['html_url'], "github")
       end
@@ -42,9 +42,13 @@ module Githello
         label = get_github_label(card)
         git_repo = label.name.split(/:/).last
         owner, repo = git_repo.split(/\//)
-        p "adding card #{card.name} to github repo #{git_repo}"
-        issue = github.issues.create( :user => owner, :repo => repo, :title => card.name, :body => card.desc)
-        card.add_attachment(issue['html_url'], "github")
+        $LOG.info "adding card #{card.name} to github repo #{git_repo}"
+        begin
+          issue = github.issues.create( :user => owner, :repo => repo, :title => card.name, :body => card.desc)
+          card.add_attachment(issue['html_url'], "github")
+        rescue e
+          $LOG.info "Error creating issue for card #{e}"
+        end
       end
     end
 
