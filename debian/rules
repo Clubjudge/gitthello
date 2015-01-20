@@ -10,4 +10,11 @@
 #export DH_VERBOSE=1
 
 %:
-	dh $@ 
+	dh $@
+	chmod +x ./scripts/bundle/install
+	./scripts/bundle/install
+	bundle install --no-cache --deployment
+override_dh_install:
+	dh_install --exclude .git
+override_dh_shlibdeps:
+	echo "no fuck shlibdeps"

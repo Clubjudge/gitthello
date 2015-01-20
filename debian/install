@@ -1,0 +1,6 @@
+lib var/www/gitthello
+.bundle var/www/gitthello
+vendor var/www/gitthello
+Rakefile var/www/gitthello
+Gemfile var/www/gitthello
+Gemfile.lock var/www/gitthello

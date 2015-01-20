@@ -1,0 +1,12 @@
+#!/bin/sh
+# postrm script for gitthello
+#
+# see: dh_installdeb(1)
+
+set -e
+if [ "$1" = "purge" ]
+then
+        rm -rf /var/www/gitthello
+        userdel gitthello
+fi
+exit 0
