@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+BUNDLE=$(which bundle) || BUNDLE="NULL"
+if [ "${BUNDLE}" = "NULL" ]; then
+  gem install bundler
+fi
+bundle install --no-cache --deployment --without development test
