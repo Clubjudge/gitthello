@@ -40,9 +40,9 @@ module Githello
     def add_new_cards_to_repos github
       new_cards.each do |card|
         label = get_github_label(card)
-        git_repo = label.name.split(/:/).last
-        owner, repo = git_repo.split(/\//)
-        $LOG.info "adding card #{card.name} to github repo #{git_repo}"
+        repo = label.name.split(/:/).last
+        owner = 'Clubjudge'
+        $LOG.info "adding card #{card.name} to github repo #{repo}"
         begin
           issue = github.issues.create( :user => owner, :repo => repo, :title => card.name, :body => card.desc)
           card.add_attachment(issue['html_url'], "github")
