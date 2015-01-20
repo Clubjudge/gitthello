@@ -1,0 +1,5 @@
+gitthello (10.0.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- root <root@jaime.clubjudge.com>  Tue, 20 Jan 2015 16:40:15 +0100
