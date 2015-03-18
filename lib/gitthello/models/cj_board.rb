@@ -35,10 +35,17 @@ module Githello
       else
         issue['title']
       end
-      $LOG.info "adding issue #{title} :: #{issue['id']} to trello"
-      Trello::Card.create(:name => title, :list_id => list_id, :desc => issue['body']).tap do |card|
+      repo = repo_from_issue(issue)
+      $LOG.info "adding issue #{title} :: #{issue['id']} :: #{repo} to trello"
+      Trello::Card.create(:name => "#{repo}::#{title}", :list_id => list_id, :desc => issue['body']).tap do |card|
         card.add_attachment(issue['html_url'], "github")
       end
+    end
+
+    def repo_from_issue issue
+      html_url = issue['html_url']
+      return '' unless html_url.present?
+      html_url.scan(/http.*\/Clubjudge\/(.*)\/(issues|pull).*/).flatten.first
     end
 
     def add_new_cards_to_repos github
