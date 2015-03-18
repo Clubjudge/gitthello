@@ -30,8 +30,13 @@ module Githello
     end
 
     def add_card issue
-      $LOG.info "adding issue #{issue['title']} :: #{issue['id']} to trello"
-      Trello::Card.create(:name => issue['title'], :list_id => list_id, :desc => issue['body']).tap do |card|
+      title = if issue["pull_request"]
+        "PR::#{issue['title']}"
+      else
+        issue['title']
+      end
+      $LOG.info "adding issue #{title} :: #{issue['id']} to trello"
+      Trello::Card.create(:name => title, :list_id => list_id, :desc => issue['body']).tap do |card|
         card.add_attachment(issue['html_url'], "github")
       end
     end
